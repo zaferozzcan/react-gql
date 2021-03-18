@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "./custom.scss";
+import github from "./db/js";
+import React, { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const githubQuery = {
+      query: `
+      {
+        viewer{
+          name
+        }
+      }
+      `,
+    };
+    fetch(github.baseURL, {
+      method: "POST",
+      headers: "hithub.headers",
+      body: JSON.stringify(githubQuery),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data).catch((err) => {
+          console.log(err);
+        });
+      });
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container mt-5">
+      <h1 className="text-primary">
+        <i className="bi bi-diagram-2-fill"></i> Repos
+      </h1>
     </div>
   );
 }
