@@ -1,6 +1,6 @@
 import "./App.css";
 import "./custom.scss";
-import github from "./db/js";
+import github from "./db.js";
 import React, { useEffect } from "react";
 
 function App() {
@@ -16,14 +16,15 @@ function App() {
     };
     fetch(github.baseURL, {
       method: "POST",
-      headers: "hithub.headers",
+      headers: github.headers,
       body: JSON.stringify(githubQuery),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data).catch((err) => {
-          console.log(err);
-        });
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   });
   return (
