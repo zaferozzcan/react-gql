@@ -32,6 +32,11 @@ function App() {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  function setString(string) {
+    setQueryString(string);
+  }
+
   return (
     <div className="App container mt-5">
       <h1 className="text-primary">
@@ -41,7 +46,7 @@ function App() {
         <i className="bi bi-person-bounding-box"></i> {userName}
       </h1>
       <div className="repo-list-container container">
-        <SeachBox />
+        <SeachBox setString={setString} />
         {repoList &&
           repoList.map((item, index) => {
             return (
