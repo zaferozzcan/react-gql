@@ -6,6 +6,7 @@ import React, { useEffect, useState, useCallback } from "react";
 
 function App() {
   let [userName, setUserName] = useState("");
+  let [repoList, setRepoList] = useState([]);
 
   let fetchData = useCallback(() => {
     fetch(github.baseURL, {
@@ -17,6 +18,7 @@ function App() {
       .then((data) => {
         console.log(data);
         setUserName(data.data.viewer.name);
+        setRepoList(data.data.viewer.repositories.nodes);
       })
       .catch((err) => {
         console.log(err);
@@ -26,7 +28,7 @@ function App() {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
-
+  console.log("repoList", repoList);
   return (
     <div className="App container mt-5">
       <h1 className="text-primary">
