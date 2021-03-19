@@ -4,6 +4,7 @@ import github from "./db.js";
 import githubQuery from "./Query.js";
 import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 function App() {
   let [userName, setUserName] = useState("");
@@ -29,7 +30,6 @@ function App() {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
-
   return (
     <div className="App container mt-5">
       <h1 className="text-primary">
@@ -45,6 +45,15 @@ function App() {
             return (
               <div key={index} className="repo">
                 <h5>{item.name}</h5>
+                <Button
+                  variant={
+                    item.viewerSubscription === "SUBSCRIBED"
+                      ? "success"
+                      : "secondary"
+                  }
+                >
+                  {item.viewerSubscription}
+                </Button>
                 <p>{item.url}</p>
               </div>
             );
