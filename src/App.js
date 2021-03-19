@@ -1,9 +1,10 @@
 import "./App.css";
 import "./custom.scss";
 import github from "./db.js";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function App() {
+  let [userName, setUserName] = useState("");
   useEffect(() => {
     const githubQuery = {
       query: `
@@ -21,12 +22,13 @@ function App() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        setUserName(data.data.viewer.name);
       })
       .catch((err) => {
         console.log(err);
       });
   });
+
   return (
     <div className="App container mt-5">
       <h1 className="text-primary">
