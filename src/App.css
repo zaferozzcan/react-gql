@@ -45,7 +45,7 @@
 
 .repo {
   border: 1px solid blue;
-  width: 70%;
+  min-width: 70%;
   border-radius: 5px;
   margin-bottom: 10px;
   padding-top: 10px;

@@ -17,8 +17,9 @@ function App() {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setUserName(data.data.viewer.name);
-        setRepoList(data.data.viewer.repositories.nodes);
+        setRepoList(data.data.search.nodes);
       })
       .catch((err) => {
         console.log(err);
