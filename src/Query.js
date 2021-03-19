@@ -5,7 +5,7 @@ const githubQuery = (queryString) => {
   viewer {
     name
   }
-  search(query: "${queryString} react user:zaferozzcan sort:updated-desc", type: REPOSITORY, first: 10) {
+  search(query: "${queryString} user:zaferozzcan sort:updated-desc", type: REPOSITORY, first: 10) {
     nodes {
       ... on Repository {
         name

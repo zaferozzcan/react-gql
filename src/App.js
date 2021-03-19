@@ -5,6 +5,7 @@ import githubQuery from "./Query.js";
 import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import SeachBox from "./components/SeachBox";
 
 function App() {
   let [userName, setUserName] = useState("");
@@ -40,7 +41,7 @@ function App() {
         <i className="bi bi-person-bounding-box"></i> {userName}
       </h1>
       <div className="repo-list-container container">
-        <h1>REPOLIST</h1>
+        <SeachBox />
         {repoList &&
           repoList.map((item, index) => {
             return (
