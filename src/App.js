@@ -9,12 +9,13 @@ import { Button } from "react-bootstrap";
 function App() {
   let [userName, setUserName] = useState("");
   let [repoList, setRepoList] = useState([]);
+  let [queryString, setQueryString] = useState("react");
 
   let fetchData = useCallback(() => {
     fetch(github.baseURL, {
       method: "POST",
       headers: github.headers,
-      body: JSON.stringify(githubQuery),
+      body: JSON.stringify(githubQuery(queryString)),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -25,7 +26,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [queryString]);
 
   useEffect(() => {
     fetchData();
